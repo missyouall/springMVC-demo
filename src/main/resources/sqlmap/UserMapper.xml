@@ -12,18 +12,21 @@
     id, user_name, password, create_date, email
   </sql>
   <sql id="Where_Condition">
+  <where>
+    1=1
     <if test="id!=null">
-      id=#{id,jdbcType=DECIMAL}
+      AND id=#{id,jdbcType=DECIMAL}
     </if>
     <if test="userName!=null">
-      user_name=#{userName,jdbcType=VARCHAR}
+      AND user_name=#{userName,jdbcType=VARCHAR}
     </if>
     <if test="password!=null">
-      password=#{password,jdbcType=VARCHAR}
+      AND password=#{password,jdbcType=VARCHAR}
     </if>
     <if test="email!=null">
-      email=#{email,jdbcType=VARCHAR}
+      AND email=#{email,jdbcType=VARCHAR}
     </if>
+  </where>
   </sql>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user
@@ -107,7 +110,8 @@
   <select id="selectByExample" parameterType="com.springmvc.entity.User" resultMap="BaseResultMap">
      select
      <include refid="Base_Column_List"/>
-     from current_user
+     from t_user
+
      <include refid="Where_Condition"/>
   </select>
 </mapper>

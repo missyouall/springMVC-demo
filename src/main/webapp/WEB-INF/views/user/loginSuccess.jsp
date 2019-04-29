@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>登录成功</title>
-    欢迎您：${userName}
+    欢迎您：${resultUser.userName}
 </head>
 <body>
 
